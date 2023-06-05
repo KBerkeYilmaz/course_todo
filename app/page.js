@@ -14,14 +14,23 @@ export default function Home() {
   
   const [todoList, setTodoList] = useState(DUMMY_TODO)
 
+
   const todoChangeHandler = (event) =>  {
         setTodoList((prevTodo) =>{
         return [event,...prevTodo]
         
       })
-      
   }
-  console.log(todoList)
+
+  const todoDeleteHandler = (removedTodo) => {
+        setTodoList((prevTodos)=> {
+        const updatedList = prevTodos.filter((todo) => {
+                            return todo.id !== removedTodo
+                            })
+                            return updatedList
+                          })
+  }
+
   
   return (
       <main className="
@@ -33,7 +42,7 @@ export default function Home() {
       justify-start 
       bg-slate-500">
         <TodoForm onTodoChange={todoChangeHandler}/>
-        <TodoList items={todoList}/>
+        <TodoList items={todoList} onTodoRemove={todoDeleteHandler}/>
       </main>
       )
 }

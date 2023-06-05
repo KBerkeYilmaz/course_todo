@@ -1,10 +1,9 @@
-import { useState} from 'react';
-
 import TodoItem from "./TodoItem";
 
 const TodoList = (props) => {
     const items = props.items
-    
+    const removedTodo = itemId => () => props.onTodoRemove(itemId);
+
     return (
         <ul 
         className="
@@ -20,10 +19,12 @@ const TodoList = (props) => {
         "
         >   
             {
-                items.map(item => (
+                items.map((item) => (
                     <TodoItem 
-                        key={item.id} 
-                        title={item.title} 
+                        id = {item.id}
+                        key={item.id}
+                        title={item.title}
+                        removedItem= {removedTodo(item.id)} 
                     />
                 ))
             }

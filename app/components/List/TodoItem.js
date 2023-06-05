@@ -1,18 +1,32 @@
 const TodoItem = (props) => {
     
+    const todoClickHandler = () => {
+        props.removedItem(props.id)
+    }
+
     return (
-        <li>
-            <h3
+        <li 
+        className="
+        bg-red-600
+        rounded-lg
+        "
+        >
+            <button
             className="
-            text-4xl
-            text-white
-            bg-red-600
+            w-full
+            h-full
             p-10
-            rounded-lg
             "
+            onClick={todoClickHandler}
             >
-            {props.title}
-            </h3>
+                <h3
+                className="
+                text-3xl
+                text-white
+                ">
+                {props.title}
+                </h3>
+            </button>
         </li>
     )
 }
