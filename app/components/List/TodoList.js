@@ -12,7 +12,7 @@ const TodoList = (props) => {
         flex
         flex-col
         gap-10
-        bg-amber-200
+        bg-slate-300
         rounded-lg
         p-10
         mb-10

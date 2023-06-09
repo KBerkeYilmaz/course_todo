@@ -2,7 +2,7 @@
 
 import { useState} from 'react';
 
-let count = 1;
+let count = 0;
 
 const TodoForm = (props) => {
     
@@ -41,7 +41,7 @@ const TodoForm = (props) => {
         justify-center 
         items-center
         gap-5
-        rounded-3xl
+        rounded-lg
         my-10
         p-10"
         >

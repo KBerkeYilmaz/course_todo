@@ -7,7 +7,7 @@ const TodoItem = (props) => {
     return (
         <li 
         className="
-        bg-red-600
+        bg-teal-800
         rounded-lg
         "
         >
@@ -22,7 +22,7 @@ const TodoItem = (props) => {
                 <h3
                 className="
                 text-3xl
-                text-white
+                text-slate-200
                 ">
                 {props.title}
                 </h3>
