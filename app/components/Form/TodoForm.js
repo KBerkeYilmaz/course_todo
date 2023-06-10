@@ -1,6 +1,7 @@
 'use client'
 
 import { useState} from 'react';
+import Button from '../UI/Button';
 
 let count = 0;
 
@@ -8,22 +9,30 @@ const TodoForm = (props) => {
     
 
     const [inputState, setInputState] = useState('')
-    const [todoKey,setTodoKey] = useState(count)
+    const [todoId,setTodoId] = useState(count)
+    const [isValid, setIsValid] = useState(true)
 
     const inputChangeHandler = (event) => {
-        let value = event.target.value
-        setInputState(value)
+        let value = event.target.value;
+        if(value.trim().length > 0) {
+        setIsValid(true);    
+        }
+        setInputState(value);
     }
 
     const submitFormHandler = (event) => {
         event.preventDefault()
+        if(inputState.trim().length === 0) {
+            setIsValid(false)
+            return;
+        }
         const newTodo = {
-            id: todoKey,
+            id: todoId,
             title: inputState
         }
         props.onTodoChange(newTodo)
         setInputState('')
-        setTodoKey(count += 1)
+        setTodoId(count += 1)
 
     }
 
@@ -45,24 +54,21 @@ const TodoForm = (props) => {
         my-10
         p-10"
         >
+            <label 
+            className={`text-4xl ${!isValid ? 'text-xl' : 'text-4xl'}`}
+            style={{color: !isValid ? 'red' : 'black'}}>What is your ToDo?</label>
             <input 
             className="
             rounded-md
             w-[70%]
             p-3"
             type="text"
+            style={{borderColor: !isValid ? 'red' : 'black', 
+                    backgroundColor: !isValid ? 'salmon' : 'white'}}
             value={inputState}
             onChange={inputChangeHandler} 
-            required/>
-            <button
-                className="
-                bg-red-700 
-                w-60
-                h-10 
-                rounded-md 
-                text-slate-200"
-                type='submit'
-                >Add Todo</button>
+            />
+            <Button type='submit'>Add ToDo</Button>
     </form> 
     )
 }

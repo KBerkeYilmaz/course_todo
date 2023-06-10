@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import TodoForm from "./components/Form/TodoForm";
 import TodoList from './components/List/TodoList';
-
+import Main from './components/UI/Main';
 
 
 export default function Home() {
@@ -31,29 +31,16 @@ export default function Home() {
   return (
 
       
-      <main className="
-      w-screen 
-      min-h-screen 
-      flex 
-      flex-col 
-      items-center 
-      justify-start 
-      bg-slate-500">
+      <Main> 
         <TodoForm onTodoChange={todoChangeHandler}/>
         <TodoList items={todoList} onTodoRemove={todoDeleteHandler}/>
-      </main>
+      </Main>
       )
 } else {
       return (
-      <main className="
-      w-screen 
-      min-h-screen 
-      flex 
-      flex-col 
-      items-center 
-      justify-start 
-      bg-slate-500">
+      <Main>
       <TodoForm onTodoChange={todoChangeHandler}/>
+      
       <div className='
       w-[40%]
       min-h-[60%]
@@ -66,7 +53,7 @@ export default function Home() {
       text-slate-200
       
       '
-      ><p className='bg-teal-800 w-full
+      ><p className='bg-red-700 w-full
       h-full
       p-10
       flex
@@ -74,11 +61,10 @@ export default function Home() {
       items-center
       rounded-lg
       text-3xl
-      
-      "
-      '>Nothing ToDo</p>
+      '
+      >Nothing ToDo</p>
       </div>
-      </main>
+      </Main>
       )
 }
 }
